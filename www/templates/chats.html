@@ -1,0 +1,20 @@
+<ion-view view-title="Mensagens">
+<ion-nav-buttons side="right">
+  <button class="icon button button-clear" menu-toggle="left" menu-close><img src="img/icon.png" alt=""></button>
+</ion-nav-buttons>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-chat " ng-repeat="chat in chats" type="item-text-wrap" href="#/app/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}" class="chat-face">
+        <p class="chat-time">{{chat.time}}</p>
+        <div class="chat-content">
+          <h2 class="{{chat.read}}">{{chat.name}}</h2>
+          <p>{{chat.lastText}}</p>
+        </div>
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

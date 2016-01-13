@@ -1,0 +1,39 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button>Back</ion-nav-back-button>
+        	<ion-nav-buttons side="left">
+              	<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar><ion-nav-view name="menuContent">
+        </ion-nav-view>
+    </ion-side-menu-content>
+
+    <ion-side-menu side="left">
+        <ion-content>
+            <ion-list>
+                <ion-item class="item-thumbnail-left item-text-wrap menu-header">
+                    <img src="img/vini.png" alt="Name">
+                    <h2>Vinicius Santos</h2>
+                    <p><i class="icon ion-ios-telephone"></i> <a ng-href="tel:(11) 95478-2186">(11) 95478-2186</a></p>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <!-- <ion-item  menu-close href="#/login">Login</ion-item> -->
+                <!--<ion-list><ion-item menu-close ng-click="login()">Login</ion-item>-->
+                <ion-item  menu-close href="#/app/path">Início</ion-item>
+                <ion-item  menu-close href="#/app/profile">Meu cadastro</ion-item>
+                <ion-item  menu-close href="#/app/chats">Mensagens<span class="badge badge-positive">2</span></ion-item>
+                <ion-item  menu-close href="#/app/sinistros">sinistros</ion-item>
+                <!-- <a class="item item-icon-right" ng-click="collapsed=!collapsed">sinistros <i ng-show="collapsed" class="icon ion-ios-arrow-up icon-accessory"></i><i  ng-hide="collapsed" class="icon ion-ios-arrow-down icon-accessory"></i></a>
+                <ion-list ng-show="collapsed">
+                    <ion-item  menu-close ui-sref="/app/sinistros">Abrir sinistro</ion-item>
+                    <ion-item  menu-close>Historico</ion-item>
+                    <ion-item  menu-close>Contatos</ion-item>
+                </ion-list> -->
+                <!-- <ion-item  menu-close>Configuracoes</ion-item> -->
+                <ion-item  menu-close>Logout</ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

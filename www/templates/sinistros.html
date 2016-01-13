@@ -1,0 +1,28 @@
+<ion-view view-title="Sinistros">
+	<ion-nav-buttons side="right">
+	    <a href="#/app/novosinistro" class="button button-clear button-energized" menu-toggle="left" menu-close>NOVO</a>
+	</ion-nav-buttons>
+  	<ion-content>
+  		<ion-list class="sinistros-list">
+  			<ion-item class="item item-remove-animate" ng-repeat="sin in sins">
+  				<div class="sin-badge {{sin.read}}"></div>
+  				<p class="sin-time">1:09PM</p>
+  				<h2>DMX-2988</h2>
+  				<p>Land Rover Range Rover Evoque Dynamic</p>
+  				<p>Vermelho - 2014/2014</p>
+  				<ion-option-button class="button-assertive" ng-click="remove(sin)">
+					<div class="sin-options">
+						<i class="ion-android-close"></i>
+						<span>apagar</span>
+					</div>
+  				</ion-option-button>
+  				<ion-option-button class="button-positive" ng-click="remove(sin)">
+					<div class="sin-options">
+						<i class="ion-checkmark-round"></i>
+						<span>Re abrir</span>
+					</div>
+  				</ion-option-button>
+  			</ion-item>	    
+  		</ion-list>
+  	</ion-content>
+</ion-view>
