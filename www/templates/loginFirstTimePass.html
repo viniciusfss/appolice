@@ -5,16 +5,18 @@
                 <img src="img/login_icon.png" alt="">
             </div>
             <p class="text-center">
-
             </p>
         </div>
         <div class="list input-list">
             <label class="item item-input item-clear">
-              <input type="text" class=" text-center" placeholder="CPF/CNPJ" ng-model="login" ng-keyup="removeNonNumbers()">
+              <input type="password" class="text-center" placeholder="SUA SENHA" ng-model="pass1">
             </label>
+          <label class="item item-input item-clear">
+            <input type="password" class="text-center" placeholder="REPITA A SENHA" ng-model="pass2" ng-keyup="checkIfPassMatches()">
+          </label>
         </div>
         <div class="button-wrap">
-            <button ng-click="askForTokenAndGoNextPage()" class="button button-block button-light">PRÓXIMO</button>
+            <button ng-disabled="disableBtn" ng-click="createNewPass()" class="button button-block button-light">CRIAR SENHA</button>
         </div>
     </div>
 </ion-view>

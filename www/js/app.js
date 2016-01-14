@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngIOS9UIWebViewPatch'])
+angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'ngIOS9UIWebViewPatch'])
 
 
 .run(function($ionicPlatform) {
@@ -24,46 +24,63 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $httpProvider, $urlRouterProvider) {
   $stateProvider
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-  })
+    .state('app', {
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
+    })
 
-  .state('app.renovacao', {
-    url: '/renovacao',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/renovacao.html',
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    })
+
+    .state('loginFirstTimePass', {
+      url: '/login/ftp',
+      templateUrl: 'templates/loginFirstTimePass.html',
+      controller: 'LoginFTPCtrl'
+    })
+
+    .state('loginPasswordPage', {
+      url: '/login/ftp',
+      templateUrl: 'templates/loginPasswordPage.html',
+      controller: 'LoginCtrl'
+    })
+
+    .state('firstLoginStep1', {
+      url: '/loginStep1',
+    })
+
+    .state('app.renovacao', {
+      url: '/renovacao',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/renovacao.html',
+        }
       }
-    }
-  })
+    })
 
-  .state('app.renovacaoDetail', {
-    url: '/renovacaoDetail',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/renovacaoDetail.html',
+    .state('app.renovacaoDetail', {
+      url: '/renovacaoDetail',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/renovacaoDetail.html',
+        }
       }
-    }
-  })
+    })
 
-  .state('app.novosinistro', {
-    url: '/novosinistro',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/novosinistro.html',
+    .state('app.novosinistro', {
+      url: '/novosinistro',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/novosinistro.html',
+        }
       }
-    }
-  })
-
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+    })
 
     .state('app.sinistros', {
       url: '/sinistros',
@@ -94,8 +111,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
 
-    .state('app.path', {
-      url: '/path',
+    .state('app.dashboard', {
+      url: '/dashboard',
       views: {
         'menuContent': {
           templateUrl: 'templates/path.html',
@@ -125,5 +142,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/path');
+  $urlRouterProvider.otherwise('/app/dashboard');
 });

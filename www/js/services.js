@@ -1,21 +1,78 @@
-angular.module('starter.services', [])
-.service('AuthService', function($q, $http, APP_CONSTANTS) {
-
-  var login = function (username, password) {
-    /*
-     * This will save the token into the localStorage and set the X-Token header.
-     * Also, it checks if the user is a client or a broker. Broker access is not
-     * allowed.
-     */
-  }
-
-  var firstUseGeneratePassword = function (password, token) {
-    // This will be used when the user tries to login for the first time.
-  }
+angular.module('starter.services', ['constants'])
+.factory('AuthFactory', function($q, $http, APP_CONSTANTS) {
+  var self = this;
+  this.tempToken = '';
+  this.userId = '';
 
   return {
-    login: login,
-    firstUseGeneratePassword: firstUseGeneratePassword,
+    login: function(userId, password, cb) {
+      /*
+       * This will save the token into the localStorage and set the X-Token header.
+       * Also, it checks if the user is a client or a broker. Broker access is not
+       * allowed.
+       */
+      var user = {id: userId, password: password};
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'account/login';
+      $http({
+        method: 'PUT',
+        url: apiPath,
+        data: user
+      })
+        .then(function successCallback(response) {
+          console.log(response.data);
+          localStorage.token = response.data.token;
+          $http.defaults.headers.common['X-Auth-Token'] = response.data.token;
+          cb(undefined, response.data);
+        }, function error(response) {
+          cb(response.status);
+        })
+
+    },
+
+    requestFirstUseToken: function(user, cb) {
+      /*
+       * This function will ask the backend for a token, so the user can generate
+       * a new password for herself. If the user already has a password, it will
+       * return error: "Already has password". If an user was not found, it'll
+       * return a error: "Not found."
+       */
+      self.userId = user.username;
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'client/passwordToken';
+      $http({
+        method: 'PUT',
+        url: apiPath,
+        data: user
+      })
+      .then(function successCallback(response) {
+        self.tempToken = response.data.token;
+        cb(undefined, response.data);
+      }, function error(response) {
+        cb(response.status);
+      })
+    },
+
+    createNewPass: function(username, password, token, cb) {
+      // This will be used when the user tries to login for the first time.
+      var user = {username: username, password: password, tempToken: token};
+
+      console.log(user);
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'client/savePass';
+      $http({
+        method: 'PUT',
+        url: apiPath,
+        data: user
+      }).then(
+        function successCallback(response) {
+          cb(undefined, response.data);
+        },
+        function errorCallback(response) {
+          cb(response.status);
+        }
+      )
+    },
+
+    getTempToken: function() { return self.tempToken; },
+    getUserId: function() { return self.userId }
   }
 })
 
