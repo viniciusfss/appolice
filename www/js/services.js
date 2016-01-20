@@ -1,5 +1,5 @@
 angular.module('starter.services', ['constants'])
-.factory('AuthFactory', function($q, $http, APP_CONSTANTS) {
+.factory('AuthFactory', function($http, APP_CONSTANTS) {
   var self = this;
   this.tempToken = '';
   this.userId = '';
@@ -11,7 +11,7 @@ angular.module('starter.services', ['constants'])
        * Also, it checks if the user is a client or a broker. Broker access is not
        * allowed.
        */
-      var user = {id: userId, password: password};
+      var user = { id: userId, password: password };
       var apiPath = APP_CONSTANTS.appoliceUrl + 'account/login';
       $http({
         method: 'PUT',
@@ -21,9 +21,11 @@ angular.module('starter.services', ['constants'])
         .then(function successCallback(response) {
           console.log(response.data);
           localStorage.token = response.data.token;
-          $http.defaults.headers.common['X-Auth-Token'] = response.data.token;
+          $http.defaults.headers.common['X-Token'] = localStorage.token;
           cb(undefined, response.data);
         }, function error(response) {
+          console.log(1);
+          console.log(response);
           cb(response.status);
         })
 
@@ -47,6 +49,8 @@ angular.module('starter.services', ['constants'])
         self.tempToken = response.data.token;
         cb(undefined, response.data);
       }, function error(response) {
+        console.log(2);
+        console.log(response.status);
         cb(response.status);
       })
     },
@@ -66,6 +70,8 @@ angular.module('starter.services', ['constants'])
           cb(undefined, response.data);
         },
         function errorCallback(response) {
+          console.log(3);
+          console.log(response);
           cb(response.status);
         }
       )
@@ -76,6 +82,48 @@ angular.module('starter.services', ['constants'])
   }
 })
 
+.factory('UserFactory', function($http, APP_CONSTANTS) {
+  var self = this;
+
+  return {
+    getUserInfo: function (cb) {
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'account';
+      $http({
+        method: 'GET',
+        url: apiPath
+      }).then(function success(result) {
+        cb(undefined, result.data);
+      }, function error(result) {
+        cb(result.status);
+      });
+    },
+
+    updateUserInfo: function (user, cb) {
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'account/update';
+      $http({
+        method: 'PUT',
+        url: apiPath,
+        data: user
+      }).then(function success(result) {
+        cb(undefined, result.data);
+      }, function error(result) {
+        cb(result.status);
+      });
+    },
+
+    getBrokerInfo: function (cb) {
+      var apiPath = APP_CONSTANTS.appoliceUrl + 'broker';
+      $http({
+        method: 'GET',
+        url: apiPath
+      }).then(function success(result) {
+        cb(undefined, result.data);
+      }, function error(result) {
+        cb(result.status);
+      });
+    }
+  };
+})
 
 .service('Chats', function() {
   // Might use a resource here that returns a JSON array
@@ -187,6 +235,4 @@ angular.module('starter.services', ['constants'])
     }
   };
 })
-
-
 ;

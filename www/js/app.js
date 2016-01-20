@@ -51,8 +51,19 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
       controller: 'LoginCtrl'
     })
 
-    .state('firstLoginStep1', {
-      url: '/loginStep1',
+    .state('app.loading', {
+      url: '/loading',
+      templateUrl: 'templates/loading.html'
+    })
+
+    .state('app.dashboard', {
+      url: '/dashboard',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/dashboard.html',
+          controller: 'DashboardCtrl'
+        }
+      }
     })
 
     .state('app.renovacao', {
@@ -106,17 +117,8 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
       url: '/profile',
       views: {
         'menuContent': {
+          controller: 'ProfileCtrl',
           templateUrl: 'templates/profile.html',
-        }
-      }
-    })
-
-    .state('app.dashboard', {
-      url: '/dashboard',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/path.html',
-          controller: 'PathCtrol'
         }
       }
     })
@@ -142,5 +144,5 @@ angular.module('starter', ['ionic','starter.controllers', 'starter.services', 'n
 
   ;
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/loading');
 });

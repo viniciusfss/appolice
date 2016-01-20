@@ -5,33 +5,32 @@
   <ion-content>
     <div class="list profile-list">
     	<div class="item profile-photo-section">
-    		<a href="#">clique aqui para<br>adicionar sua foto</a>
+    		<a ng-click="takePhoto()">clique aqui para adicionar <br>ou editar a sua foto</a>
     	</div>
 		<label class="item item-input">
 	      	<span class="input-label">Nome</span>
-	      	<input type="text" value="Vinicius Santos">
+	      	<input type="text" ng-model="user.name" placeholder="Vinícius Santos">
 	    </label>
 		<label class="item item-input">
 	      	<span class="input-label">TEL</span>
-	      	<input type="text" value="(11)5478-3256">
+	      	<input type="text" ng-model="user.phone" placeholder="(11) 5478-3256">
 	    </label>
 		<label class="item item-input item-stacked-label">
 	      	<span class="input-label">endereço</span>
-	      	<textarea>Alameda Blingbling, 215. Apto 14
-Santana de Paraíba, SP</textarea>
+	      	<textarea ng-model="user.location" placeholder="Alameda Blingbling, 215. Apto 14 Santana de Paraíba, SP">
+          </textarea>
 	    </label>
 	    <div class="item item-divider"></div>
 	    <label class="item item-input">
 	      	<span class="input-label">Email</span>
-	      	<input type="email" value="vfssantos@gmail.com">
+	      	<input type="email" ng-model="user.email" placeholder="vfssantos@gmail.com">
 	    </label>
 		<label class="item item-input">
 	      	<span class="input-label">Senha</span>
-	      	<input type="password" value="ahmad">
+	      	<input type="password" ng-model="user.password">
 	    </label>
 	    <div class="item item-divider"></div>
-	    <button class="item button button-block button-positive" type="submit">enviar</button>
-	    
+	    <button class="item button button-block button-positive" ng-click="updateUserInfo()">enviar</button>
     </div>
   </ion-content>
 </ion-view>

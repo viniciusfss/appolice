@@ -5,13 +5,13 @@
   <ion-content>
     <ion-list class="path-wrapper">
     	<ion-item class="broker-img">
-    		<img src="img/broker.png" alt="">
+    		<img src="" alt="">
     	</ion-item>
     	<div class="item broker-title item-icon-right" ng-click="collapsed=!collapsed">
-			<img src="img/vini.png" alt="">
+			<img src="{{broker.imgPath}}" alt="">
     		<div class="broker-title-content">
-    			<h2>Lucas Rico</h2>
-    			<p><i class="icon ion-ios-location icon-location-broker"></i>&nbsp;&nbsp;&nbsp;&nbsp;São Paulo, SP <i ng-show="collapsed" class="icon ion-ios-arrow-up icon-accessory"></i><i  ng-hide="collapsed" class="icon ion-ios-arrow-down icon-accessory"></i></p>
+    			<h2>{{broker.name || broker.email || "Nome do Corretor"}}</h2>
+    			<p><i class="icon ion-ios-location icon-location-broker"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{broker.location || "Cidade do Corretor, CC"}}<i ng-show="collapsed" class="icon ion-ios-arrow-up icon-accessory"></i><i ng-hide="collapsed" class="icon ion-ios-arrow-down icon-accessory"></i></p>
     		</div>
     	</div>
     	<ion-item class="broker-details" ng-show="collapsed">
@@ -19,19 +19,19 @@
     		<div class="row broker-services">
     			<div class="col col-50">
     				<ion-list>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.devicePolicy">
 							<i><img src="img/service1.png" alt=""></i>
 							<p class="stp">Seguro Portáteis</p>
 						</ion-item>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.travelPolicy">
 							<i><img src="img/service2.png" alt=""></i>
 							<p>Seguro Viagem</p>
 						</ion-item>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.lifePolicy">
 							<i><img src="img/service3.png" alt=""></i>
 							<p class="stp">Seguro de Vida</p>
 						</ion-item>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.propertyPolicy">
 							<i><img src="img/service4.png" alt=""></i>
 							<p class="stp">Seguro Residência</p>
 						</ion-item>
@@ -39,15 +39,15 @@
     			</div>
     			<div class="col col-50">
     				<ion-list>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.workPolicy">
 							<i><img src="img/service5.png" alt=""></i>
 							<p>Seguro Resp Civil<br>e Profissional</p>
 						</ion-item>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.personalPolicy">
 							<i><img src="img/service6.png" alt=""></i>
 							<p>Seguro Acidentes<br>Pessoais</p>
 						</ion-item>
-						<ion-item>
+						<ion-item ng-if="broker.kindOfPolicies.carPolicy">
 							<i><img src="img/service7.png" alt=""></i>
 							<p>Seguro Automóveis</p>
 						</ion-item>
@@ -57,16 +57,16 @@
     		<h2>Contatos</h2>
     		<ion-list class="contacts">
 				<ion-item>
-					<p><a ng-href="tel:(11) 3240-7878"><i class="icon ion-android-call"></i>&nbsp;&nbsp;(11) 3240-7878</a></p>
+					<p><a ng-href="tel:{{broker.phone}}"><i class="icon ion-android-call"></i>&nbsp;&nbsp;{{broker.phone}}</a></p>
 				</ion-item>
 				<ion-item>
 					<p class="contact-text"><i class="icon ion-android-chat"></i>&nbsp;&nbsp;ENVIAR MENSAGEM</p>
 				</ion-item>
 				<ion-item>
-					<p><a href="mailto:lucas@criar.me"><i class="icon ion-email"></i>&nbsp;&nbsp;lucas@criar.me</a></p>
+					<p><a href="mailto:{{broker.email}}"><i class="icon ion-email"></i>&nbsp;&nbsp;{{broker.email}}</a></p>
 				</ion-item>
 				<ion-item>
-					<p><i class="icon ion-link"></i>&nbsp;&nbsp;www.corretora.com</p>
+					<!--<p><i class="icon ion-link"></i>&nbsp;&nbsp;www.corretora.com</p>-->
 				</ion-item>
     		</ion-list>
     	</ion-item>
@@ -75,14 +75,13 @@
     	</ion-item>
     	<ion-item class="directions">
 			<ion-list>
-				<ion-item>
+				<ion-item ng-repeat="policy in user.policies">
 					<div class="left-line"></div>
-					<i class="icon ion-android-car orange"></i>
-					<h2>Seguro Automotivo</h2>
-					<p>Land Rover Range Rover Evoque<br>DNW6793<br>São Paulo, SP</p>
-					<button ng-click="moveToDetalhes()" class="button button-positive button-small">ver mais</button>
+					<h2>{{policy.title}}</h2>
+					<p>{{policy.subtitle}}<br>{{policy.brand}} {{policy.model}}<br>{{policy.plate}}</p>
+          <button ng-click="moveToDetalhes()" class="button button-positive button-small">ver mais</button>
 				</ion-item>
-				<ion-item>
+				<!--<ion-item>
 					<div class="left-line"></div>
 					<i class="icon ion-ios-home"></i>
 					<h2>Seguro Automotivo</h2>
@@ -96,7 +95,7 @@
 					<h2>Seguro Automotivo</h2>
 					<p>Land Rover Range Rover Evoque<br>DNW6793<br>São Paulo, SP</p>
 					<button class="button button-positive button-small">ver mais</button>
-				</ion-item>
+				</ion-item>-->
 			</ion-list>
     	</ion-item>
     </ion-list>
