@@ -9,18 +9,7 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../appolice_server/public/img/symbols/property.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../appolice_server/public/img/symbols/travel.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../appolice_server/public/img/symbols/work.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/templates/loading.html" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../appolice_server/apps/api/controllers/brokers.coffee" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/www/templates/path.html" afterPath="$PROJECT_DIR$/www/templates/dashboard.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.xml" afterPath="$PROJECT_DIR$/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ionic.project" afterPath="$PROJECT_DIR$/ionic.project" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/app.js" afterPath="$PROJECT_DIR$/www/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/constants.js" afterPath="$PROJECT_DIR$/www/js/constants.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/controllers.js" afterPath="$PROJECT_DIR$/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/js/services.js" afterPath="$PROJECT_DIR$/www/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/menu.html" afterPath="$PROJECT_DIR$/www/templates/menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/templates/profile.html" afterPath="$PROJECT_DIR$/www/templates/profile.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appolice_server/app.coffee" afterPath="$PROJECT_DIR$/../appolice_server/app.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appolice_server/apps/api/api.coffee" afterPath="$PROJECT_DIR$/../appolice_server/apps/api/api.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../appolice_server/apps/api/controllers/accounts.coffee" afterPath="$PROJECT_DIR$/../appolice_server/apps/api/controllers/accounts.coffee" />
@@ -623,7 +612,7 @@
       <workItem from="1452719862048" duration="7642000" />
       <workItem from="1452778177474" duration="16817000" />
       <workItem from="1453053387183" duration="19013000" />
-      <workItem from="1453088450226" duration="18375000" />
+      <workItem from="1453088450226" duration="19152000" />
     </task>
     <task id="LOCAL-00001" summary="Wired authentication into the app.">
       <created>1452795567066</created>
@@ -635,10 +624,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61847000" />
+    <option name="totallyTimeSpent" value="62624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="886" extended-state="7" />
+    <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
